@@ -35,11 +35,14 @@ Create a `synthesis/` working directory and place the skill files alongside it:
 
 ```
 your-project/
+├── README.md                   ← this file
 ├── SKILL.md                    ← this skill's contract
 ├── references/
 │   └── methodology.md          ← methodological reference
 ├── scripts/
 │   └── verify_synthesis.py     ← verification script
+├── examples/
+│   └── protocol.md             ← example protocol (GHG emissions: natural vs synthetic fertilizers)
 └── synthesis/                  ← working directory (created during run)
     ├── protocol.md
     ├── search_log.jsonl
@@ -204,6 +207,23 @@ python scripts/verify_synthesis.py --help
 | **Rapid review** | Time-critical decisions only. Every shortcut must be recorded and its risk acknowledged. |
 
 See `references/methodology.md` §1 for full decision rules.
+
+---
+
+## Example Protocol
+
+An annotated, pre-registered protocol is included at `examples/protocol.md` as a reference template. It covers:
+
+- **Decision question**: clear, comparative, policy-relevant
+- **Audience**: explicit decision-maker
+- **Stance**: policy-neutral
+- **PECO framing** with critical scoping decisions (system boundary, functional unit, equivalence basis, GWP metric)
+- **Inclusion/exclusion criteria** with coded reasons matching `references/methodology.md` §4
+- **Search strategy** with 3 concept blocks and controlled vocabulary
+- **Pre-declared synthesis method**: meta-analysis contingent + SWiM fallback, GRADE certainty rating
+- **Page budget**: 6–10 pages
+
+Use it as a starting point when writing your own `synthesis/protocol.md`.
 
 ---
 
