@@ -89,33 +89,70 @@ searching; record the final question as pre-registered.
 ## 3. Search strategy
 
 The search is the part most often unreproducible, and reproducibility is
-non-negotiable. Build and log it as follows.
+non-negotiable. It is also the part where recall is most easily lost
+silently — an inadequate search caps the quality of everything
+downstream. Build and log it as follows.
 
 - **Concept blocks.** Decompose the question into 2–4 concepts (e.g.,
   Population AND Intervention AND Outcome). Within each block, OR together
   controlled vocabulary and free-text synonyms; AND the blocks together.
-- **Controlled vocabulary + free text.** Use database thesaurus terms
-  (MeSH in MEDLINE, Emtree in Embase) *and* title/abstract keywords;
-  controlled vocabulary alone misses recent/unindexed records.
+- **Controlled vocabulary + free text, ported across databases.** Use
+  database thesaurus terms (MeSH in MEDLINE, Emtree in Embase) *and*
+  title/abstract keywords; controlled vocabulary alone misses recent or
+  unindexed records. Operational procedure: build and refine the strategy
+  in one primary database first, then translate it to each other source
+  by swapping that database's subject headings while preserving the
+  free-text keyword set — do not assume a query is portable verbatim.
+- **Draft, then test and revise — do not finalize in one pass.** Treat
+  the first formulation as a draft. Run it, inspect what known-relevant
+  records it misses, harvest additional terms from the indexing of those
+  records, and revise. Searcher expertise materially changes recall (in
+  the source study below, a more experienced searcher captured 75% of
+  ultimately included articles vs. 60% for a novice), and the gain came
+  from a build→test→modify loop, not a single attempt. Under `/goal`,
+  treat strategy revision as an explicit sub-step of Checkpoint 2, not a
+  one-shot action.
+- **Use more than one independent strategy, then merge.** Develop at
+  least two independent search formulations (different entry concepts,
+  synonym sets, or databases) and pool their results rather than relying
+  on a single "best" strategy. This is the strongest transferable finding
+  from the evidence base: independently developed searches, when
+  combined, retrieved on average ~88% of the articles ultimately included,
+  versus ~73% for any single searcher's strategy (Jones, Brennan & Davis,
+  *J Med Libr Assoc* 2020;108(3):487–93, doi:10.5195/jmla.2020.865). A
+  `search_log.jsonl` containing only one query for a whole concept is a
+  recall red flag, not a sign of efficiency.
 - **Sensitivity over precision.** A synthesis search favours recall;
   expect to screen out most hits. Do not narrow the search to reduce
   screening load.
 - **Multiple sources.** At minimum a bibliographic database; for policy
-  questions also search trial/protocol registries, preprint servers, HTA
-  agencies, government and NGO reports, and reference lists. Grey
+  and health questions also search supplementary databases (e.g. Scopus,
+  CINAHL, PsycINFO), evidence/guideline collections (Cochrane, TRIP,
+  guideline repositories), trial/protocol registries, preprint servers,
+  HTA agencies, government and NGO reports, and reference lists. Grey
   literature counters publication bias.
-- **Citation chasing.** Backward (references of included studies) and
-  forward (works citing them) snowballing catches what database syntax
-  misses. Record it as a search source.
-- **Date/language limits** must be justified in the protocol, not applied
-  for convenience; language restriction is itself a bias.
+- **Citation chasing is standard, not optional.** Backward (references of
+  included studies) *and* forward (works citing them) snowballing
+  routinely surfaces records that database syntax misses; run both and
+  record each as a search source.
+- **Filters are conditional, and every filter is logged.** Apply
+  date / study-design / population filters only when the question and the
+  volume of relevant literature justify them — not by default to trim
+  hits — and record every filter applied alongside the query. Date and
+  language limits must be justified in the protocol; language restriction
+  is itself a bias.
 - **When to stop searching.** There is no fixed N. Stop when the planned
-  sources are exhausted and snowballing yields no new includable records.
-  Log every executed query verbatim (this populates `search_log.jsonl`),
-  so the search can be rerun.
+  sources are exhausted, the multi-strategy results have converged, and
+  snowballing yields no new includable records. Log every executed query
+  verbatim with its filters (this populates `search_log.jsonl`), so the
+  search can be rerun exactly.
 
 Report search methods to PRISMA-S granularity: each source, the full
-query string, date run, and counts.
+query string, filters, date run, and counts. The "independent strategies
+merged" and "draft→test→revise" practices above are empirically grounded
+in the cited QI study, which also found that comprehensive searching and
+relevance selection are *distinct* skills — reinforcing why screening and
+appraisal are separated and human-gated in this skill (see §4, §13).
 
 ---
 
